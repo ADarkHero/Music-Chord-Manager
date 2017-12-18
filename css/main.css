@@ -1,0 +1,60 @@
+
+table, th, td {
+   border: 1px solid #ddd;
+}
+
+input{
+	width: 95%;
+	border: none;
+	margin-left: 2.5%
+}
+
+textarea{
+	width: 95%;
+	margin-left: 2.5%;
+	height: 4.5em;
+	border: none;
+}
+
+.search {
+	margin-bottom: 2em;
+    border-width: 2px;
+    border-style: inset;
+	height: 2em;
+}
+
+.id{
+	width: 5%;
+}
+
+.artist{
+	width: 20%;
+}
+
+.title{
+	width: 20%;
+}
+
+.text{
+	width: 30%;
+}
+
+.notes{
+	width: 10%;
+}
+
+.link{
+	width: 10%;
+}
+
+.linktext{
+	overflow: hidden;
+}
+
+.editnew{
+	width: 5%;
+}
+
+.delete{
+	width: 5%;
+}
