@@ -154,13 +154,32 @@
 			echo "</tr>";
 		}
 		
+		function displayNewEntry($pdo, $table_name, $tables){
+			echo '<form action="index.php" method="post">';
+				echo "<tr>";
+					for($i = 0; $i < sizeof($tables); $i++){
+						
+						echo '<td class="table'.$i.'"><textarea name="new'.$tables[$i].'"></textarea></td>';
+						
+					}
+					echo '<td class="tableeditnew"><input type="submit" name="new" value="NEW"></button></td>'; 
+					echo '<td class="tabledelete"><input type="submit" name="new" value="NEW"></button></td>'; 
+				echo "</tr>";
+			echo "</form>";
+		}
+		
 		function displayEntries($pdo, $table_name, $tables, $statement){
 			$result = $statement->execute();
 			for($i = 0; $row = $statement->fetch(); $i++) {
 				echo '<form action="index.php" method="post">';
 					echo "<tr>";
 						for($i = 0; $i < sizeof($tables); $i++){
-							echo '<td class="table'.$i.'"><textarea name="edit'.$tables[$i].'">'.$row[$i].'</textarea></td>';
+							$containslink = strpos($row[$i], "http");	//Checks if the field contains a link -> If yes, it should be made clickable
+							echo '<td class="table'.$i.'">';
+								if($containslink !== false){ echo '<a href="'.$row[$i].'" target="_blank">'; }
+									echo '<textarea name="edit'.$tables[$i].'">'.$row[$i].'</textarea>';
+								if($containslink !== false){ echo '</a>'; }
+							echo '</td>';
 						}
 						echo '<td class="tableeditnew"><input type="submit" name="edit" value="EDIT"></button></td>'; 
 						echo '<td class="tabledelete"><a href="#" onclick="confirmDeletion('.$row[0].')">DELETE</a></td>'; 
@@ -169,17 +188,6 @@
 			}
 		}
 		
-		function displayNewEntry($pdo, $table_name, $tables){
-			echo '<form action="index.php" method="post">';
-				echo "<tr>";
-					for($i = 0; $i < sizeof($tables); $i++){
-						echo '<td class="table'.$i.'"><textarea name="new'.$tables[$i].'"></textarea></td>';
-					}
-					echo '<td class="tableeditnew"><input type="submit" name="new" value="NEW"></button></td>'; 
-					echo '<td class="tabledelete"></td>'; 
-				echo "</tr>";
-			echo "</form>";
-		}
 ?>
 
 	<script>
