@@ -1,3 +1,6 @@
+table{
+	width: 100%;
+}
 
 table, th, td {
    border: 1px solid #ddd;
@@ -23,38 +26,38 @@ textarea{
 	height: 2em;
 }
 
-.id{
+.table0{
 	width: 5%;
 }
 
-.artist{
+.table1{
 	width: 20%;
 }
 
-.title{
+.table2{
 	width: 20%;
 }
 
-.text{
+.table3{
 	width: 30%;
 }
 
-.notes{
+.table4{
 	width: 10%;
 }
 
-.link{
+.table5{
 	width: 10%;
 }
 
-.linktext{
+.table6{
 	overflow: hidden;
 }
 
-.editnew{
+.tableeditnew{
 	width: 5%;
 }
 
-.delete{
+.tabledelete{
 	width: 5%;
 }
