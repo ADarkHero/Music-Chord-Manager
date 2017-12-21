@@ -74,14 +74,5 @@
 	}
 	
 	
-	//Generates the menu on top of the page
-	function generateMenu($pdo, $menu_table_name, $menu_tables){
-		$sql = "SELECT * FROM ".$menu_table_name;
-		$statement = $pdo->prepare($sql);
-		$result = $statement->execute();
-		
-		for($i = 0; $row = $statement->fetch(); $i++) {
-			echo '<a href="'.$row[2].'" target="_blank"><button class="menu'.$row[0].'">'.$row[1].'</button></a>';
-		}	
-	}
+	
 ?>

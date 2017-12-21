@@ -4,6 +4,7 @@ table{
 
 table, th, td {
    border: 1px solid #ddd;
+   overflow: hidden;
 }
 
 input{
@@ -15,12 +16,16 @@ input{
 textarea{
 	width: 95%;
 	margin-left: 2.5%;
-	height: 4.5em;
+	height: 5.5em;
 	border: none;
 }
 
 #menu{
 	margin-bottom: 1em;
+}
+
+#menu button {
+	margin-right: 0.25em;
 }
 
 .search {
@@ -51,11 +56,19 @@ textarea{
 }
 
 .table5{
-	width: 10%;
+	width: 5%;	
+}
+
+.table5 textarea{
+	overflow: hidden;
 }
 
 .table6{
-	overflow: hidden;
+	max-width: 80px;
+}
+
+.table6 iframe{
+	padding-top: 3px;
 }
 
 .tableeditnew{

@@ -7,7 +7,12 @@
 	$table_name = "music";
 	$menu_table_name = "menu";
 	
-	$pdo = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
+	try {
+	   $pdo = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
+	} catch (PDOException $e) {
+	   print "Error!: " . $e->getMessage() . "<br/>";
+	   die();
+	}
 	
 	//Read all column names from database
 	$statement = $pdo->prepare("DESCRIBE $table_name");
