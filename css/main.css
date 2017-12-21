@@ -19,6 +19,10 @@ textarea{
 	border: none;
 }
 
+#menu{
+	margin-bottom: 1em;
+}
+
 .search {
 	margin-bottom: 2em;
     border-width: 2px;
