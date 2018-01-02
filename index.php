@@ -20,8 +20,32 @@
 </div>
 
 <div id="search">
-	<?php displaySearch($pdo, $menu_table_name, $menu_tables); //Display search function ?>
+	<?php displaySearch(); //Display search function ?>
 </div>
+
+	<?php
+		//If the menu shall be edited, tell the functions to use the menu tables
+		//To make the edit/delete functions work, we must add a cookie
+		//The cookie stores a true/false, depending, if we are in the menu edit or not
+		if(isset($_GET["edit_menu"])){
+			if($_GET["edit_menu"] === "true"){
+				setcookie("edit_menu","true",0); 
+			}
+			else{
+				setcookie("edit_menu","",time() - 3600);
+			}
+			
+			header("Refresh:0; url=index.php");
+		}
+		
+		if(isset($_COOKIE["edit_menu"])){
+			if($_COOKIE["edit_menu"] === "true"){
+				$tables = $menu_tables;
+				$table_name = $menu_table_name;
+			}
+		}
+			
+	?>
 
 <div id="contenthead">
 	<?php displayHead($tables); //Generate Table head ?>

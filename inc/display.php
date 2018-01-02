@@ -7,7 +7,20 @@
 		
 		for($i = 0; $row = $statement->fetch(); $i++) {
 			echo '<a href="'.$row[2].'" target="_blank"><button class="menu'.$row[0].'">'.$row[1].'</button></a>';
-		}	
+		}
+		 
+		$edit_menu = "false"; 
+		if(isset($_COOKIE["edit_menu"])){
+			$edit_menu = $_COOKIE["edit_menu"];
+		}
+		
+		if($edit_menu === "true"){
+			echo '<a href="index.php?edit_menu=false"><button class="menu_new">END menu EDIT</button></a>';
+		}
+		else{
+			echo '<a href="index.php?edit_menu=true"><button class="menu_new">EDIT menu</button></a>';
+		}			
+		
 	}
 
 	//Displays the search engine
