@@ -50,7 +50,7 @@
 					$containsid = strpos(strtolower($tables[$i]), "id");            //Checks if the fieldname contains "id" if yes: set the input inactive
                                             
 					echo '<td class="table'.$i.'"><textarea name="new'.$tables[$i].'" ';
-                                            if($containsid !== false) { echo "disabled"; }              //Is the textarea disabled?
+                                            if($containsid !== false) { echo 'disabled placeholder="ID is managed by the server."'; }              //Is the textarea disabled?
                                         echo '>';
                                             if($containsdate !== false) { echo date("Y-m-d H:i:s"); }   //Should datetime be shown?
                                         echo '</textarea></td>';
@@ -83,7 +83,11 @@
 									echo '<iframe width="80" height="80" src="https://www.youtube.com/embed/'.$ytid.'" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>';
 								}
 								else{
-									echo '<textarea name="edit'.$tables[$i].'">'.$row[$i].'</textarea>';
+                                                                    $containsid = strpos(strtolower($tables[$i]), "id");
+                                                                    
+                                                                    echo '<textarea name="edit'.$tables[$i].'"';
+                                                                    if($containsid !== false) { echo 'disabled'; }  
+                                                                    echo '>'.$row[$i].'</textarea>';
 								}	
 							if($containslink !== false){ echo '</a>'; }
 						echo '</td>';

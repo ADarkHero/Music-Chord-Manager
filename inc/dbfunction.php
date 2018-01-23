@@ -14,9 +14,12 @@
 		}
 		$sql = substr($sql, 0, -2);	//Cut last , 
 		$sql = $sql.") VALUES (";
+                error_reporting(0);
 		for($i = 0; $i < sizeof($tables); $i++){
-			$sql = $sql.'"'.$_POST["new".$tables[$i]].'", ';
+                    $sql = $sql.'"'.$_POST["new".$tables[$i]].'", ';
 		}
+                error_reporting(-1);
+                
 		$sql = substr($sql, 0, -2);	//Cut last , 
 		$sql = $sql.")";
 				
