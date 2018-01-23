@@ -46,9 +46,14 @@
 		echo '<form action="index.php" method="post">';
 			echo "<tr>";
 				for($i = 0; $i < sizeof($tables); $i++){
-					
-					echo '<td class="table'.$i.'"><textarea name="new'.$tables[$i].'"></textarea></td>';
-					
+					$containsdate = strpos(strtolower($tables[$i]), "date");	//Checks if the fieldname contains "date" if yes: display the current date and time
+					$containsid = strpos(strtolower($tables[$i]), "id");            //Checks if the fieldname contains "id" if yes: set the input inactive
+                                            
+					echo '<td class="table'.$i.'"><textarea name="new'.$tables[$i].'" ';
+                                            if($containsid !== false) { echo "disabled"; }              //Is the textarea disabled?
+                                        echo '>';
+                                            if($containsdate !== false) { echo date("Y-m-d H:i:s"); }   //Should datetime be shown?
+                                        echo '</textarea></td>';
 				}
 				echo '<td class="tableeditnew"><input type="submit" name="new" value="NEW"></button></td>'; 
 				echo '<td class="tabledelete"><input type="submit" name="new" value="NEW"></button></td>'; 
