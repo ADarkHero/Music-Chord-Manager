@@ -44,9 +44,18 @@ textarea{
 
 
 
-.tabledelete{
-    text-align: center;
+.tablenew input{
+    background-color: #4296FF;
 }
+
+.tableedit input{
+    background-color: #4ECC00;
+}
+
+.tabledelete input{
+    background-color: #CC0000;
+}
+
 
 .idtextarea{
     resize: none;

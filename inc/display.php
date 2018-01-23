@@ -50,8 +50,8 @@
                                         generateRow($pdo, $table_name, null, $tables[$i]);
                                         echo '</td>';
 				}
-				echo '<td class="tableeditnew"><input type="submit" name="new" value="NEW"></button></td>'; 
-				echo '<td class="tabledelete"><input type="submit" name="new" value="NEW"></button></td>'; 
+				echo '<td class="tablenew"><input type="submit" name="new" value="NEW"></button></td>'; 
+				echo '<td class="tablenew"><input type="submit" name="new" value="NEW"></button></td>'; 
 			echo "</tr>";
 		echo "</form>";
 	}
@@ -67,8 +67,8 @@
                                                 generateRow($pdo, $table_name, $row[$i], $tables[$i]);
 						echo '</td>';
 					}
-					echo '<td class="tableeditnew"><input type="submit" name="edit" value="EDIT"></button></td>'; 
-					echo '<td class="tabledelete"><a href="#" onclick="confirmDeletion('.$row[0].')">DELETE</a></td>'; 
+					echo '<td class="tableedit"><input type="submit" name="edit" value="EDIT"></input></td>'; 
+					echo '<td class="tabledelete"><a href="#" onclick="confirmDeletion('.$row[0].')"><input type="button" value="DELETE"></input></a></td>'; 
 				echo "</tr>";
 			echo "</form>";
 		}
@@ -105,6 +105,7 @@
                 else if ($containsdate !== false){
                     echo '<input type="datetime-local"  name="'.$column.'" value="';
                     if($row === null){
+                        date_default_timezone_set('Europe/Berlin');
                         echo date('Y-m-d\TH:i');
                     }
                     else {
