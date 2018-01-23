@@ -50,6 +50,7 @@ textarea{
 
 .idtextarea{
     resize: none;
+    text-align: center;
 }
 
 

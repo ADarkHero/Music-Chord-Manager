@@ -16,7 +16,7 @@
 		$sql = $sql.") VALUES (";
                 error_reporting(0);
 		for($i = 0; $i < sizeof($tables); $i++){
-                    $sql = $sql.'"'.$_POST["new".$tables[$i]].'", ';
+                    $sql = $sql.'"'.$_POST[$tables[$i]].'", ';
 		}
                 error_reporting(-1);
                 
@@ -32,11 +32,11 @@
 	function editEntry($pdo, $table_name, $tables){
 		$sql = "UPDATE ".$table_name." SET ";
 		for($i = 0; $i < sizeof($tables); $i++){
-			$sql = $sql.$tables[$i].'="'.$_POST["edit".$tables[$i]].'", ';
+			$sql = $sql.$tables[$i].'="'.$_POST[$tables[$i]].'", ';
 		}
 		$sql = substr($sql, 0, -2);	//Cut last , 
-		$sql = $sql." WHERE ".$tables[0].'="'.$_POST["edit".$tables[0]].'"';
-		                
+		$sql = $sql." WHERE ".$tables[0].'="'.$_POST[$tables[0]].'"';
+		                            
 		$statement = $pdo->prepare($sql);
 
 		$statement->execute();
@@ -80,6 +80,11 @@
 		return $statement;
 	}
 	
-	
+	function getNumberOfEntries($pdo, $table_name, $column){
+            $sql = 'SELECT '.$column.' FROM '.$table_name.' ORDER BY '.$column.' DESC LIMIT 0, 1';
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
+            return $statement->fetchColumn();
+        }
 	
 ?>
