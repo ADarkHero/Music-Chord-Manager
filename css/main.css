@@ -38,7 +38,9 @@ textarea{
     margin-bottom: 2em;
     border-width: 2px;
     border-style: inset;
-    height: 2em;
+    height: 2.5em;
+    width: 90%;
+    margin-left: 5%;
 }
 
 
