@@ -26,7 +26,7 @@
 	//Displays the search engine
 	function displaySearch(){
 		echo'<form action="index.php" method="post">';
-			echo'<input type="text" class="search" name="search" placeholder="Search..." autofocus>';
+			echo'<input type="search" class="search" name="search" placeholder="Search..." autofocus>';
 		echo'</form>';
 	}
 	
@@ -46,21 +46,16 @@
 		echo '<form action="index.php" method="post">';
 			echo "<tr>";
 				for($i = 0; $i < sizeof($tables); $i++){
-					$containsdate = strpos(strtolower($tables[$i]), "date");	//Checks if the fieldname contains "date" if yes: display the current date and time
-					$containsid = strpos(strtolower($tables[$i]), "id");            //Checks if the fieldname contains "id" if yes: set the input inactive
-                                            
-					echo '<td class="'.$tables[$i].'"><textarea name="new'.$tables[$i].'" ';
-                                            if($containsid !== false) { echo 'disabled placeholder="ID is managed by the server."'; }              //Is the textarea disabled?
-                                        echo '>';
-                                            if($containsdate !== false) { echo date("Y-m-d H:i:s"); }   //Should datetime be shown?
-                                        echo '</textarea></td>';
+					echo '<td class="'.$tables[$i].'">';
+                                        generateRow(null,$tables[$i]);
+                                        echo '</td>';
 				}
 				echo '<td class="tableeditnew"><input type="submit" name="new" value="NEW"></button></td>'; 
 				echo '<td class="tabledelete"><input type="submit" name="new" value="NEW"></button></td>'; 
 			echo "</tr>";
 		echo "</form>";
 	}
-	
+        
 	//Displays entries from the database (depending of the search was used or not)
 	function displayEntries($pdo, $table_name, $tables, $statement){
 		$result = $statement->execute();
@@ -68,28 +63,8 @@
 			echo '<form action="index.php" method="post">';
 				echo "<tr>";
 					for($i = 0; $i < sizeof($tables); $i++){
-						$containsspotify = strpos(strtolower($row[$i]), "spotify.com");	//Checks if the field contains a spotifylink -> If yes, display the spotify play thing
-						$containsyoutube = strpos(strtolower($row[$i]), "youtube.com");	//Checks if the field contains a youtubelink -> If yes, display the spotify play thing
-						if($containsspotify !== false || !$containsyoutube !== false){ $containslink = strpos(strtolower($row[$i]), "http"); /*Checks if the field contains a link -> If yes, it should be made clickable*/ }
-						
 						echo '<td class="'.$tables[$i].'">';
-							if($containslink !== false){ echo '<a href="'.$row[$i].'" target="_blank">'; }
-								if($containsspotify !== false && $row[$i] !== "" && $row[$i] !== null){	//If there is a spotify link, display the embedded thing
-									echo '<iframe src="https://open.spotify.com/embed?uri=spotify:track:'.$row[$i].'" width="80px" height="80px" frameborder="0" allowtransparency="true"></iframe>';
-								}
-								else if($containsyoutube !== false && $row[$i] !== "" && $row[$i] !== null){ //If there is a youtube link, display the embedded thing -> else display the normal textarea
-									$ytid = substr($row[$i], strrpos($row[$i], '/') + 1); //Get the video id
-									if(strpos(strtolower($ytid), "watch?v=") !== false){ $ytid = substr($ytid, 8, strlen($ytid)); } //If it's a normal YouTube link (not an embedded one) cut off the watch?v= thing
-									echo '<iframe width="80" height="80" src="https://www.youtube.com/embed/'.$ytid.'" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>';
-								}
-								else{
-                                                                    $containsid = strpos(strtolower($tables[$i]), "id");
-                                                                    
-                                                                    echo '<textarea name="edit'.$tables[$i].'"';
-                                                                    if($containsid !== false) { echo 'disabled'; }  
-                                                                    echo '>'.$row[$i].'</textarea>';
-								}	
-							if($containslink !== false){ echo '</a>'; }
+                                                generateRow($row[$i],$tables[$i]);
 						echo '</td>';
 					}
 					echo '<td class="tableeditnew"><input type="submit" name="edit" value="EDIT"></button></td>'; 
@@ -98,4 +73,55 @@
 			echo "</form>";
 		}
 	}
+        
+        
+        
+        
+        
+        
+        function generateRow($row, $tablename){
+            error_reporting(0);                                                 //I'm a bad developer and want to make things easy for myself.
+            
+            $containsspotify = strpos(strtolower($row), "spotify.com");         //Checks if the field contains a spotifylink -> If yes, display the spotify play thing
+            $containsyoutube = strpos(strtolower($row), "youtube.com");         //Checks if the field contains a youtubelink -> If yes, display the spotify play thing
+            $containsid = strpos(strtolower($tablename), "id");                 //Checks if the fieldname contains "id" if yes: set the input inactive  
+            $containsdate = strpos(strtolower($tablename), "date");            //Checks if the fieldname contains "date" if yes: display the current date and time
+            if($containsspotify !== false || !$containsyoutube !== false){ $containslink = strpos(strtolower($row), "http"); /*Checks if the field contains a link -> If yes, it should be made clickable*/ }
+
+            
+            if($containslink !== false){ echo '<a href="'.$row.'" target="_blank">'; }
+                if ($containsid !== false){
+                    echo '<textarea disabled class="idtextarea"';
+                    if($row === null){
+                        echo ' placeholder="ID is managed by the server."';
+                    }
+                    echo '>'.$row.'</textarea>';
+                    echo '<input type="hidden" name="edit'.$tablename.'" value="'.$row.'"'; //If the textarea is disabled, it doesn't transmit the id. This fixes it.
+                }  
+                else if ($containsdate !== false){
+                    echo '<input type="datetime-local"  name="new'.$tablename.'" value="';
+                    if($row === null){
+                        echo date('Y-m-d\TH:i');
+                    }
+                    else {
+                        $dateTime = DateTime::createFromFormat('Y-m-d H:i:s', $row);
+                        echo $dateTime->format('Y-m-d\TH:i');
+                    }
+                    echo '"></input>'; 
+                }
+                else if($containsspotify !== false){                            //If there is a spotify link, display the embedded thing
+                        echo '<iframe src="https://open.spotify.com/embed?uri=spotify:track:'.$row.'" width="80px" height="80px" frameborder="0" allowtransparency="true"></iframe>';
+                }
+                else if($containsyoutube !== false){                            //If there is a youtube link, display the embedded thing -> else display the normal textarea
+                        $ytid = substr($row, strrpos($row, '/') + 1);           //Get the video id
+                        if(strpos(strtolower($ytid), "watch?v=") !== false){ $ytid = substr($ytid, 8, strlen($ytid)); } //If it's a normal YouTube link (not an embedded one) cut off the watch?v= thing
+                        echo '<iframe width="80" height="80" src="https://www.youtube.com/embed/'.$ytid.'" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>';
+                }
+                else{
+                    echo '<textarea name="edit'.$tablename.'">'.$row.'</textarea>';
+                }	
+            if($containslink !== false){ echo '</a>'; }
+            
+            error_reporting(-1);
+        }
 ?>

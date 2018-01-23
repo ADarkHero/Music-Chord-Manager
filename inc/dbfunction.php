@@ -22,7 +22,7 @@
                 
 		$sql = substr($sql, 0, -2);	//Cut last , 
 		$sql = $sql.")";
-				
+
 		$statement = $pdo->prepare($sql);
 		
 		$statement->execute();
@@ -36,7 +36,7 @@
 		}
 		$sql = substr($sql, 0, -2);	//Cut last , 
 		$sql = $sql." WHERE ".$tables[0].'="'.$_POST["edit".$tables[0]].'"';
-		
+		                
 		$statement = $pdo->prepare($sql);
 
 		$statement->execute();

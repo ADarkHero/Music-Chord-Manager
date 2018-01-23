@@ -9,13 +9,16 @@ table, th, td {
 
 input{
     width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    height: 5.5em;
     border: none;
-    margin-left: 2.5%
 }
 
 textarea{
     width: 95%;
     margin-left: 2.5%;
+    margin-right: 2.5%;
     height: 5.5em;
     border: none;
 }
@@ -38,6 +41,17 @@ textarea{
     border-style: inset;
     height: 2em;
 }
+
+
+
+.tabledelete{
+    text-align: center;
+}
+
+.idtextarea{
+    resize: none;
+}
+
 
 
 /************************************
