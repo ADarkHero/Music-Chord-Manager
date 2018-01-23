@@ -14,10 +14,12 @@ input{
 }
 
 textarea{
-    width: 90%;
-    height: 90%;
-    padding: 5% 5% 5% 5%;
+    width: 99%;
+    height: 95%;
+    padding: 0;
+    margin: 2px 0px 0px 2px;
     border: none;
+    resize: none;
 }
 
 #menu{
