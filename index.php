@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Music Stuffs</title>
+		<title></title>
 			<meta charset="UTF-8">
 			<link rel="stylesheet" type="text/css" href="css/main.css">
 	</head>

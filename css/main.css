@@ -39,40 +39,70 @@ textarea{
 	height: 2em;
 }
 
-.table0{
+
+/************************************
+Music
+***********************************/
+.MusicID{
 	width: 5%;
 }
 
-.table1{
+.MusicArtist{
 	width: 20%;
 }
 
-.table2{
+.MusicTitle{
 	width: 20%;
 }
 
-.table3{
+.MusicText{
 	width: 30%;
 }
 
-.table4{
+.MusicNotes{
 	width: 10%;
 }
 
-.table5{
+.MusicLink{
 	width: 5%;	
 }
 
-.table5 textarea{
+.MusicLink textarea{
 	overflow: hidden;
 }
 
-.table6{
+.MusicSpotify{
 	max-width: 80px;
 }
 
-.table6 iframe{
+.MusicSpotify iframe{
 	padding-top: 3px;
+}
+
+
+
+/***********************************
+Emotion (I currently use this project for more than one purpose)
+***********************************/
+
+.EID{
+	width: 10%;
+}
+
+.EDateTime{
+	width: 20%;
+}
+
+.ERating{
+	width: 10%;
+}
+
+.ERatingEmoji{
+	width: 10%;
+}
+
+.EText{
+	width: 40%;
 }
 
 .tableeditnew{

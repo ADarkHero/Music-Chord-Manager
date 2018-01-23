@@ -34,7 +34,7 @@
 	function displayHead($tables){
 		echo '<table class="table"><tr>';
 		for($i = 0; $i < sizeof($tables); $i++){
-			echo '<th class="table'.$i.'">'.$tables[$i].' <a href="index.php?order='.$tables[$i].'">▼</a> <a href="index.php?order='.$tables[$i].'&desc=true">▲</a></th>';
+			echo '<th class="'.$tables[$i].'">'.$tables[$i].' <a href="index.php?order='.$tables[$i].'">▼</a> <a href="index.php?order='.$tables[$i].'&desc=true">▲</a></th>';
 		}
 		echo '<th class="tableeditnew">Edit</th>';
 		echo '<th class="tabledelete">Delete</th>';
