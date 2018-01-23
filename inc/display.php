@@ -49,7 +49,7 @@
 					$containsdate = strpos(strtolower($tables[$i]), "date");	//Checks if the fieldname contains "date" if yes: display the current date and time
 					$containsid = strpos(strtolower($tables[$i]), "id");            //Checks if the fieldname contains "id" if yes: set the input inactive
                                             
-					echo '<td class="table'.$i.'"><textarea name="new'.$tables[$i].'" ';
+					echo '<td class="'.$tables[$i].'"><textarea name="new'.$tables[$i].'" ';
                                             if($containsid !== false) { echo 'disabled placeholder="ID is managed by the server."'; }              //Is the textarea disabled?
                                         echo '>';
                                             if($containsdate !== false) { echo date("Y-m-d H:i:s"); }   //Should datetime be shown?
@@ -72,7 +72,7 @@
 						$containsyoutube = strpos(strtolower($row[$i]), "youtube.com");	//Checks if the field contains a youtubelink -> If yes, display the spotify play thing
 						if($containsspotify !== false || !$containsyoutube !== false){ $containslink = strpos(strtolower($row[$i]), "http"); /*Checks if the field contains a link -> If yes, it should be made clickable*/ }
 						
-						echo '<td class="table'.$i.'">';
+						echo '<td class="'.$tables[$i].'">';
 							if($containslink !== false){ echo '<a href="'.$row[$i].'" target="_blank">'; }
 								if($containsspotify !== false && $row[$i] !== "" && $row[$i] !== null){	//If there is a spotify link, display the embedded thing
 									echo '<iframe src="https://open.spotify.com/embed?uri=spotify:track:'.$row[$i].'" width="80px" height="80px" frameborder="0" allowtransparency="true"></iframe>';

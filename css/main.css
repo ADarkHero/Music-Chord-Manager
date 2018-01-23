@@ -1,5 +1,5 @@
 table{
-	width: 100%;
+    width: 100%;
 }
 
 table, th, td {
@@ -8,35 +8,35 @@ table, th, td {
 }
 
 input{
-	width: 95%;
-	border: none;
-	margin-left: 2.5%
+    width: 95%;
+    border: none;
+    margin-left: 2.5%
 }
 
 textarea{
-	width: 95%;
-	margin-left: 2.5%;
-	height: 5.5em;
-	border: none;
+    width: 95%;
+    margin-left: 2.5%;
+    height: 5.5em;
+    border: none;
 }
 
 #menu{
-	margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 #menu button {
-	margin-right: 0.25em;
+    margin-right: 0.25em;
 }
 
 .menu_new{
-	margin-left: 2em;
+    margin-left: 2em;
 }
 
 .search {
-	margin-bottom: 2em;
+    margin-bottom: 2em;
     border-width: 2px;
     border-style: inset;
-	height: 2em;
+    height: 2em;
 }
 
 
@@ -44,39 +44,39 @@ textarea{
 Music
 ***********************************/
 .MusicID{
-	width: 5%;
+    width: 5%;
 }
 
 .MusicArtist{
-	width: 20%;
+    width: 20%;
 }
 
 .MusicTitle{
-	width: 20%;
+    width: 20%;
 }
 
 .MusicText{
-	width: 30%;
+    width: 30%;
 }
 
 .MusicNotes{
-	width: 10%;
+    width: 10%;
 }
 
 .MusicLink{
-	width: 5%;	
+    width: 5%;	
 }
 
 .MusicLink textarea{
-	overflow: hidden;
+    overflow: hidden;
 }
 
 .MusicSpotify{
-	max-width: 80px;
+    max-width: 80px;
 }
 
 .MusicSpotify iframe{
-	padding-top: 3px;
+    padding-top: 3px;
 }
 
 
@@ -86,29 +86,37 @@ Emotion (I currently use this project for more than one purpose)
 ***********************************/
 
 .EID{
-	width: 10%;
+    width: 10%;
 }
 
 .EDateTime{
-	width: 20%;
+    width: 20%;
 }
 
 .ERating{
-	width: 10%;
+    width: 10%;
+}
+
+.ERating textarea{
+    text-align: center;
 }
 
 .ERatingEmoji{
-	width: 10%;
+    width: 10%;
+}
+
+.ERatingEmoji textarea{
+    text-align: center;
 }
 
 .EText{
-	width: 40%;
+    width: 40%;
 }
 
 .tableeditnew{
-	width: 5%;
+    width: 5%;
 }
 
 .tabledelete{
-	width: 5%;
+    width: 5%;
 }

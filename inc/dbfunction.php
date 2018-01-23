@@ -60,8 +60,12 @@
 		//Base statement
 		$sql = "SELECT * FROM ".$table_name." ORDER BY ";
 		//Which order? If get sends an order, use it - else: sort by second table
+                //If the second tablename contains "date", reverse the order (newest entries first)
 		if(isset($_GET["order"]) && $_GET["order"] != ""){ 
 			$sql = $sql.$_GET["order"];
+		}
+                else if (strpos(strtolower($tables[1]), "date")){
+			$sql = $sql.$tables[1]." DESC";
 		}
 		else{
 			$sql = $sql.$tables[1];
