@@ -8,18 +8,15 @@ table, th, td {
 }
 
 input{
-    width: 95%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    height: 5.5em;
+    width: 100%;
+    height: 100%;
     border: none;
 }
 
 textarea{
-    width: 95%;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    height: 5.5em;
+    width: 90%;
+    height: 90%;
+    padding: 5% 5% 5% 5%;
     border: none;
 }
 
@@ -67,6 +64,10 @@ textarea{
 /************************************
 Music
 ***********************************/
+.musicrow{
+    height: 6em;
+}
+
 .MusicID{
     width: 5%;
 }
@@ -108,6 +109,9 @@ Music
 /***********************************
 Emotion (I currently use this project for more than one purpose)
 ***********************************/
+.emotionrow{
+    height: 2em;
+}
 
 .EID{
     width: 10%;

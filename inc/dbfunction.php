@@ -81,10 +81,21 @@
 	}
 	
 	function getNumberOfEntries($pdo, $table_name, $column){
+            $sql = 'SELECT count('.$column.') FROM '.$table_name;
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
+            return $statement->fetchColumn();
+        }
+        
+	function getLatestID($pdo, $table_name, $column){
             $sql = 'SELECT '.$column.' FROM '.$table_name.' ORDER BY '.$column.' DESC LIMIT 0, 1';
             $statement = $pdo->prepare($sql);
             $statement->execute();
             return $statement->fetchColumn();
         }
-	
+        
+        function getNewIDCell($pdo, $table_name, $column){
+            $currentID = getLatestID($pdo, $table_name, $column)+1;
+            return $currentID." | ".getNumberOfEntries($pdo, $table_name, $column);
+        }
 ?>

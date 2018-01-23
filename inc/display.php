@@ -46,12 +46,12 @@
 		echo '<form action="index.php" method="post">';
 			echo "<tr>";
 				for($i = 0; $i < sizeof($tables); $i++){
-					echo '<td class="'.$tables[$i].'">';
+					echo '<td class="'.$tables[$i].' '.$table_name.'row">';
                                         generateRow($pdo, $table_name, null, $tables[$i]);
                                         echo '</td>';
 				}
-				echo '<td class="tablenew"><input type="submit" name="new" value="NEW"></button></td>'; 
-				echo '<td class="tablenew"><input type="submit" name="new" value="NEW"></button></td>'; 
+				echo '<td class="tablenew '.$table_name.'row"><input type="submit" name="new" value="NEW"></button></td>'; 
+				echo '<td class="tablenew '.$table_name.'row"><input type="submit" name="new" value="NEW"></button></td>'; 
 			echo "</tr>";
 		echo "</form>";
 	}
@@ -63,12 +63,12 @@
 			echo '<form action="index.php" method="post">';
 				echo "<tr>";
 					for($i = 0; $i < sizeof($tables); $i++){
-						echo '<td class="'.$tables[$i].'">';
+						echo '<td class="'.$tables[$i].' '.$table_name.'row">';
                                                 generateRow($pdo, $table_name, $row[$i], $tables[$i]);
 						echo '</td>';
 					}
-					echo '<td class="tableedit"><input type="submit" name="edit" value="EDIT"></input></td>'; 
-					echo '<td class="tabledelete"><a href="#" onclick="confirmDeletion('.$row[0].')"><input type="button" value="DELETE"></input></a></td>'; 
+					echo '<td class="tableedit '.$table_name.'row"><input type="submit" name="edit" value="EDIT"></input></td>'; 
+					echo '<td class="tabledelete '.$table_name.'row"><a href="#" onclick="confirmDeletion('.$row[0].')"><input type="button" value="DELETE"></input></a></td>'; 
 				echo "</tr>";
 			echo "</form>";
 		}
@@ -94,7 +94,7 @@
                 if ($containsid !== false){
                     echo '<input disabled type="text" class="idtextarea" value="';
                     if($row === null){
-                        echo getNumberOfEntries($pdo, $table_name, $column)+1;
+                        echo getNewIDCell($pdo, $table_name, $column);
                     }
                     else{
                         echo $row;
