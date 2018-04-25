@@ -32,7 +32,9 @@
 	function editEntry($pdo, $table_name, $tables){
 		$sql = "UPDATE ".$table_name." SET ";
 		for($i = 0; $i < sizeof($tables); $i++){
-			$sql = $sql.$tables[$i].'="'.$_POST[$tables[$i]].'", ';
+                    error_reporting(0);
+                    $sql = $sql.$tables[$i].'="'.$_POST[$tables[$i]].'", ';
+                    error_reporting(-1);
 		}
 		$sql = substr($sql, 0, -2);	//Cut last , 
 		$sql = $sql." WHERE ".$tables[0].'="'.$_POST[$tables[0]].'"';

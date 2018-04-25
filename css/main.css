@@ -39,8 +39,14 @@ textarea{
     border-width: 2px;
     border-style: inset;
     height: 2.5em;
-    width: 90%;
+    width: 70%;
     margin-left: 5%;
+}
+
+.searchbutton{
+    height: 2.5em;
+    width: 7.5%;
+    margin-left: 2.5%;
 }
 
 
@@ -72,6 +78,11 @@ textarea{
     width: 100%;
     height: 100%;
 }
+
+.checkbox{
+    height: 10px !important;
+}
+
 
 
 
@@ -149,6 +160,40 @@ Emotion (I currently use this project for more than one purpose)
 
 .EText{
     width: 40%;
+}
+
+.tableeditnew{
+    width: 5%;
+}
+
+.tabledelete{
+    width: 5%;
+}
+
+
+
+
+/***********************************
+Todo (My third project, I use this for)
+***********************************/
+.todorow{
+    height: 2em;
+}
+
+.TodoID{
+    width: 10%;
+}
+
+.TodoText{
+    width: 50%;
+}
+
+.TodoCategory{
+    width: 20%;
+}
+
+.TodoDoneCheckbox{
+    width: 10%;
 }
 
 .tableeditnew{

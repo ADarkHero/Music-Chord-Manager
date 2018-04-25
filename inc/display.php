@@ -26,7 +26,9 @@
     //Displays the search engine
     function displaySearch(){
         echo'<form action="index.php" method="post">';
-                echo'<input type="search" class="search" name="search" placeholder="Search..." autofocus>';
+            echo'<input type="search" class="search" name="search" placeholder="Search..." autofocus>';
+            echo '<input type="submit" class="searchbutton" value="submit"></input>';
+            echo '<a href="index.php"><input type="button" class="searchbutton" value="reset"></input></a>';
         echo'</form>';
     }
 

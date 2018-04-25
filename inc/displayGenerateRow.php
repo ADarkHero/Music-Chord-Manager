@@ -26,14 +26,7 @@
     }
 
     function containsCheckbox($column, $row){
-        echo '<input type="checkbox" name="'.$column.'" value="';
-        if($row === null){
-            echo 'true';
-        }
-        else{
-            echo $row;
-        }
-        echo '"';
+        echo '<input class="textbox" type="checkbox" name="'.$column.'" value="true"';
         if($row !== "" && $row !== null){
             echo " checked";
         }
