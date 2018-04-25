@@ -88,7 +88,7 @@
         $containsdate = strpos(strtolower($column), "date");                //Checks if the fieldname contains "date" if yes: display the current date and time
         $containscheckbox = strpos(strtolower($column), "checkbox");        //Checks if the fieldname contains "id" if yes: set the input inactive  
         $containsspotify = strpos(strtolower($row), "spotify.com");         //Checks if the field contains a spotifylink -> If yes, display the spotify play thing
-        $containsyoutube = strpos(strtolower($row), "youtube.com");         //Checks if the field contains a youtubelink -> If yes, display the spotify play thing
+        $containsyoutube = strpos(strtolower($row), "youtube.com") && !strpos(strtolower($row), "user");         //Checks if the field contains a youtubelink -> If yes, display the youtube play thing
         if($containsspotify !== false || !$containsyoutube !== false){ $containslink = strpos(strtolower($row), "http"); /*Checks if the field contains a link -> If yes, it should be made clickable*/ }
 
 
