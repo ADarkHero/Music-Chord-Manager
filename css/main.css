@@ -63,13 +63,23 @@ textarea{
     text-align: center;
 }
 
+.spotify{
+   width: 100%;
+   height: 100%
+}
+
+.youtube{
+    width: 100%;
+    height: 100%;
+}
+
 
 
 /************************************
 Music
 ***********************************/
 .musicrow{
-    height: 6em;
+    height: 4.8em;
 }
 
 .MusicID{
@@ -102,10 +112,6 @@ Music
 
 .MusicSpotify{
     max-width: 80px;
-}
-
-.MusicSpotify iframe{
-    padding-top: 3px;
 }
 
 
